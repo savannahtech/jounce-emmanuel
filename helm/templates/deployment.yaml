@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-benchmark
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: llm-benchmark
+  template:
+    metadata:
+      labels:
+        app: llm-benchmark
+    spec:
+      containers:
+        - name: llm-benchmark
+          image: llm-benchmark-image:latest
+          ports:
+            - containerPort: 8000
